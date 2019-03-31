@@ -24,41 +24,42 @@ Things you may want to cover:
 * ...
 
 
-## groupsテーブル
+## groupテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
+|name|string|null: false|
 
 ### Association
-- has_many :users, through: :users_group
+- has_many :messages
+- has_many :users, through: :user_groups
 
-## usersテーブル
+
+## userテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_name|string|null: false|
-|address|text|null: false|
+|name|string|null: false|
 |password|string|null: false|
 
 ### Association
 - has_many :messages
-- has_many :groups,through: :users_group
+- has_many :groups,through: :user_groups
 
-## messagesテーブル
+## messageテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |body|text|null: false|
 |image|string|
-|user_id|string|foreign_key: true|
-|group_id|string|foreign_key: true|
+|user_id|integer|foreign_key: true|
+|group_id|integer|foreign_key: true|
 
 ### Association
-- has_many :group,through: :users_group
-- has_many :users,through: :users_group
+- belong_to :group,through: :user_group
+- belong_to :users,through: :user_group
 
-## users_groupテーブル
+## user_groupテーブル
 
 |Column|Type|Options|
 |------|----|-------|
