@@ -24,7 +24,7 @@ Things you may want to cover:
 * ...
 
 
-## groupテーブル
+## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -36,7 +36,7 @@ Things you may want to cover:
 - has_many :user_groups
 
 
-## userテーブル
+## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -48,20 +48,20 @@ Things you may want to cover:
 - has_many :groups,through: :user_groups
 - has_many :user_groups
 
-## messageテーブル
+## messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |body|text|null: false|
 |image|string|
-|user_id|integer|foreign_key: true|
-|group_id|integer|foreign_key: true|
+|user_id|references|foreign_key: true|
+|group_id|references|foreign_key: true|
 
 ### Association
 - belong_to :group
 - belong_to :user
 
-## user_groupテーブル
+## user_groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
