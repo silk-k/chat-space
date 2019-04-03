@@ -1,0 +1,34 @@
+.wrapper
+  .chat-side
+    .side-header
+      .side-header__box
+        %p.side_header__box__user-name silk
+        .side_header__box__menu
+          .side_header__box__menu__edit-user
+            %i.fa.fa-edit
+          .side_header__box__menu__new-group
+            %i.fa.fa-cog
+    .groups
+      %a
+        .group
+          %p.group__group-name silk
+          %p.group__group-latest-message wa-i
+  .chat-main
+    .main-header
+      .main-header__left-box
+        %h2.main-header__left-box__current-group my
+        %ul.main-header__left-box__member-list
+          Member :
+          %li.main-header__left-box__member-list-member silk
+      %a
+        .main-header__edit-btn Edit
+    .message
+      .massage__upper-info
+        %p.message__upper-info__talker silk
+        %p.message__upper-info__date 2019.1.1
+      %p.message__text yahu
+    .form
+      .new-message-box
+        .input-box
+          %i.fa.fa-image
+        .send-btn send
