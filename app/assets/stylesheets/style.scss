@@ -5,7 +5,6 @@
   width: 100vw;
 }
 
-
 .chat-side {
   background-color:white;
   width:300px;
@@ -52,7 +51,6 @@
 }
 
 
-
 .group {
   margin-bottom: 40px;
   padding: 20px 20px;
@@ -70,7 +68,6 @@
   float:left;
   height: 100vh;
 }
-
 
 .main-header {
   box-sizing: border-box;
@@ -98,8 +95,6 @@
   }
 }
 
-
-
 .main-header__edit-btn{
   height: 40px;
   line-height: 40px;
@@ -107,7 +102,6 @@
   margin-top: 30px;
   border: solid 1px #38aef0;
   color:#38aef0;
-
 }
 
 .message {
@@ -150,7 +144,6 @@
   margin: 0;
   padding: 0;
   margin-top: 25px;
-
 }
 
 .input-box {
@@ -160,13 +153,9 @@
 }
 
 
-
 i.fa-image {
   float: right;
   margin: 20px;
-
-
-
 }
 
 .send-btn {
@@ -178,5 +167,4 @@ i.fa-image {
     color: white;
     cursor: pointer;
     text-align: center;
-
 }
