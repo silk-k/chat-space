@@ -1,32 +1,24 @@
 .wrapper
-  .chat-side
-    .side-header
-      .side-header__box
-        .side-header__box__user-name silk
-        .side-header__box__menu
-          .side-header__box__menu__edit-user
-            %i.fa.fa-edit
-          .side-header__box__menu__new-group
-            %i.fa.fa-cog
-    .groups
-      .group
-        .group__group-name silk
-        .group__group-latest-message wa-i
+  = render 'shared/side_bar'
   .chat-main
     .main-header
       .main-header__left-box
-        .main-header__left-box__current-group my
+        .main-header__left-box__current-group
+        = @group.name
         .main-header__left-box__member-list
           Member :
-          .main-header__left-box__member-list-member silk
-        .main-header__edit-btn Edit
-    .message
-      .message__upper__info
-        .message__upper__info__talker silk
-        .message__upper__info__date 2019.1.1
-      .message__text yahu
+          -@group.users.each do |user|
+            =user.name
+          .main-header__left-box__member-list-member
+      .main-header__button Edit
+    .messages
+      = render @messages
+
     .form
-      .new-message-box
-        .input-box
-          %i.fa.fa-image
-        .send-btn send
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'

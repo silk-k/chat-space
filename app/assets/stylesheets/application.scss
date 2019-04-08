@@ -1,8 +1,12 @@
 @import "./reset";
-@import "style";
+@import "config/colors";
+
 
 @import "font-awesome";
-@import "config/colors";
+
 @import "user";
 @import "modules/flash";
+@import "modules/group";
+@import "modules/side_bar";
+@import "style";
 
