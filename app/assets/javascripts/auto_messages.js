@@ -1,13 +1,13 @@
 $(function(){
   function buildHTML(message){
     var imagedata = message.image ? message.image : ''
-  var html=`<div class="message" data-message-id="${message.id}">
+    var html=`<div class="message" data-message-id="${ message.id }">
               <div class="upper-message">
                 <div class="upper-message__user-name">
                   ${ message.user_name }
                 </div>
                 <div class="upper-message__date">
-                  ${ message.time }
+                  ${ message.created_at }
                 </div>
               </div>
               <div class="lower-message">
@@ -19,28 +19,28 @@ $(function(){
             </div>`
     return html;
   }
-  $('#new_message').on('submit', function(e){
-    e.preventDefault();
-    var formData = new FormData(this);
-    var url = $(this).attr('action');
+
+var reloadMessages = function() {
+   lastMessageId = $(".message:last").data("message-id");
+    var url = location.href;
     $.ajax({
       url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
+      type: "GET",
+      data: { lastMessageId: lastMessageId },
+      dataType: 'json'
     })
-    .done(function(data){
-      var html = buildHTML(data);
+    .done(function(messages) {
+      messages.forEach(function(message){
+        var html = buildHTML(message);
       $('.messages').append(html);
-      $('form')[0].reset();
-      $('.form__submit').prop('disabled', false);
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      })
     })
-    .fail(function(){
-      alert('エラー');
-      $('.form__submit').prop('disabled', false);
-    })
-  });
+    .fail(function() {
+      alert('error');
+     });
+  };
+
+setInterval(reloadMessages, 5000);
 });
+
