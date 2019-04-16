@@ -1,6 +1,5 @@
 $(function(){
   function buildHTML(message){
-    console.log(message)
     var imagedata = message.image ? message.image : ''
     var html=`<div class="message" data-message-id="${ message.id }">
               <div class="upper-message">
@@ -38,7 +37,7 @@ var reloadMessages = function() {
       })
     })
     .fail(function() {
-      console.log('error');
+      alert('error');
      });
   };
 
