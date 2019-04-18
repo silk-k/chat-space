@@ -20,9 +20,12 @@ $(function(){
     return html;
   }
 
+
 var reloadMessages = function() {
    lastMessageId = $(".message:last").data("message-id");
     var url = location.href;
+    var interval = setInterval;
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
     $.ajax({
       url: url,
       type: "GET",
@@ -37,10 +40,11 @@ var reloadMessages = function() {
       })
     })
     .fail(function() {
-      alert('error');
+      alert('自動更新失敗');
      });
+    } else {
+      clearInterval(setinterval);
+    }
   };
-
 setInterval(reloadMessages, 5000);
 });
-
