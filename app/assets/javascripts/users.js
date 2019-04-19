@@ -22,11 +22,6 @@ $(function() {
     $("#chat-group-users").append(html)
   }
 
-  function addDeletUser(user_id,user_name) {
-    var html=``
-     $("#chat-group-users").append(html)
-  }
-
 
   $(".chat-group-form__input").on("keyup", function() {
     var input = $(this).val();
