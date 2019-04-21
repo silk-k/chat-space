@@ -11,6 +11,7 @@
             =user.name
           .main-header__left-box__member-list-member
       .main-header__button Edit
+      = link_to 'Edit', edit_user_path(user)
     .messages
       = render @messages
 
