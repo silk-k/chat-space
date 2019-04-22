@@ -32,11 +32,16 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      var html = buildHTML(data);
-      $('.messages').append(html);
-      $('form')[0].reset();
-      $('.form__submit').prop('disabled', false);
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      if(data == '' ){
+        alert('エラー');
+        $('.form__submit').prop('disabled', false);
+      } else {
+        var html = buildHTML(data);
+        $('.messages').append(html);
+        $('form')[0].reset();
+        $('.form__submit').prop('disabled', false);
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      }
     })
     .fail(function(){
       alert('エラー');

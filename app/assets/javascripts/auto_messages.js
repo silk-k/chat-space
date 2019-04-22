@@ -20,31 +20,29 @@ $(function(){
     return html;
   }
 
-setInterval(reloadMessages, 5000);
+
 var reloadMessages = function() {
    lastMessageId = $(".message:last").data("message-id");
     var url = location.href;
     var interval = setInterval;
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
-    $.ajax({
-      url: url,
-      type: "GET",
-      data: { lastMessageId: lastMessageId },
-      dataType: 'json'
-    })
-    .done(function(messages) {
-      messages.forEach(function(message){
-        var html = buildHTML(message);
-      $('.messages').append(html);
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      $.ajax({
+        url: url,
+        type: "GET",
+        data: { lastMessageId: lastMessageId },
+        dataType: 'json'
       })
-    })
-    .fail(function() {
-      alert('自動更新失敗');
-     });
-    } else {
-      clearInterval(setinterval);
-    }
+      .done(function(messages) {
+        messages.forEach(function(message){
+          var html = buildHTML(message);
+        $('.messages').append(html);
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+        })
+      })
+      .fail(function() {
+        alert('自動更新失敗');
+       });
+    };
   };
-
+  setInterval(reloadMessages, 5000);
 });
