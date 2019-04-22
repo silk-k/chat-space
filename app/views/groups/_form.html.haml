@@ -25,7 +25,7 @@
     .chat-group-form__field--right
       #chat-group-users
       - group.users.each do |user|
-        #chat-group-user.chat-group-user.clearfix
+        #chat-group-user.chat-group-user.clearfix{ id: "chat-group-user-#{user.id}" }
           =hidden_field_tag"group[user_ids][]",current_user.id
           %p.chat-group-user__name
             =user.name
