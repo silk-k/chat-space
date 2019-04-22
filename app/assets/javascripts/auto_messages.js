@@ -38,9 +38,6 @@ var reloadMessages = function() {
         $('.messages').append(html);
         $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
         })
-      })
-      .fail(function() {
-        alert('自動更新失敗');
        });
     };
   };
