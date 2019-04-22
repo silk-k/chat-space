@@ -20,7 +20,7 @@ $(function(){
     return html;
   }
 
-
+setInterval(reloadMessages, 5000);
 var reloadMessages = function() {
    lastMessageId = $(".message:last").data("message-id");
     var url = location.href;
@@ -46,5 +46,5 @@ var reloadMessages = function() {
       clearInterval(setinterval);
     }
   };
-setInterval(reloadMessages, 5000);
+
 });
